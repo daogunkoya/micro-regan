@@ -1,0 +1,90 @@
+{{>main}}
+<div class="container">
+	<div class="row">
+		<div class="panel panel-danger col-md-7 col-md-offset-1 ">
+			<div class="row">
+				<div class="panel-heading">
+					<div class="panel-title">
+						Group Setup
+					</div>
+				</div>
+				 {{#if errors}}
+	                                {{#each errors}}
+	                                	<div class="text-center">
+	                                    	<p class=" well well-sm text-danger"><strong>{{msg}}</strong></p>
+	                                    </div>
+	                                {{/each}}
+	                 {{/if}}
+
+				<div class="panel-body col-md-7 col-md-offset-2 ">
+					<form method = "post" action= "/groups/register">
+							<div class="form-group">
+								<label>Group Name</label>
+								<input name = "id" type ="hidden"  value = {{member._id}}>
+								<input name = "officer" type ="hidden" value = "{{member.fname}} {{member.lname}}" >
+								<input name = "name" type ="text" placeholder="Enter Group Name" class="form-control">
+							</div>
+							<div class="form-group">
+								<label> Leader</label>
+								
+								<input name = "leader" type ="text" placeholder="Enter Group Leader" class="form-control">
+							</div>
+
+							<div class="form-group">
+								<label>Location</label>
+								
+								<input name = "location" type ="text" placeholder="Enter Location" class="form-control">
+							</div>
+
+							<div class="form-group">
+								<input type = "submit", value = "Submit" class="btn btn-primary btn-block" >
+							</div>
+					</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+<!-- group list -->
+		<h3>{{member.fname}} {{member.lname}}-Groups</h3>
+		<div class = "row">
+			<div class="col-md-12">
+				<table class= "table table-stripped">
+					<tr>
+						<thead>
+							<th>Name</th>
+							<th>Leader</th>
+							<th>Location</th>
+							<th>Officer</th>
+							<th>Total Deposit</th>
+							<th>Total Loan</th>
+							<th>Total Repayment</th>
+							<th>Members</th>
+							<th>Delete</th>
+							
+						</thead>
+					</tr>
+						<tbody>
+							{{#if groups}}
+								{{#each groups}}
+									<tr>
+										<td>{{name}}</td>
+										<td>{{leader}}</td>
+										<td>{{location}}</td>
+										<td>{{officer}}</td>
+										<td>{{totalBalance}}</td>
+										<td>{{totalLoan}}</td>
+										<td>{{totalRepayment}}</td>
+										<td><a href = "/groups/{{_id}}/members"   class ="btn btn-success"><span class="glyphicon glyphicon-th"></span> Members</a></td>
+										<td><a href = "#" data-id = "{{_id}}"  class ="btn btn-danger delete-group" ><span class="glyphicon glyphicon-remove"></span> Delete</a></td>
+									</tr>
+								{{/each}}
+							{{/if}}
+						</tbody>
+					</tr>
+
+				</table>
+			</div>
+		</div>
+
+	</div>

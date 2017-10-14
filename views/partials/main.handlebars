@@ -1,0 +1,164 @@
+
+  
+    <div id="app">
+        <nav class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+
+                    <!-- Collapsed Hamburger -->
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+                        <span class="sr-only">Toggle Navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <!-- Branding Image -->
+                    <a class="navbar-brand text-center" href="/">
+                       <h4 style="text-transform:uppercase"> Rafgan Limited</h4> Welcome<strong style ="color:#ffff00;font-size:15px;text-transform:uppercase">  {{user.fname}} {{user.lname}}!</strong>
+                
+                    </a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                    <!-- Left Side Of Navbar -->
+                    
+
+                    <!-- Right Side Of Navbar -->
+                    <ul class="nav navbar-nav navbar-right">
+ <!-- menu Top-->
+                       
+                            <li><a href="/dashboard"> <i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+                              {{#if adminGroup}}
+                                <li><a href="/admin/creditofficers"><i class="fa fa-sticky-note" aria-hidden="true"></i> Credit Officers</a></li>
+                                <li><a href="/groups/"><i class="fa fa-users" aria-hidden="true"></i> Groups</a></li>
+
+                                 <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Expense/Payment <span class="caret"></span></a>
+                              <ul class="dropdown-menu">
+                                <li><a href="/admin/payments"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Payments</a></li>
+                                 <li><a href="/admin/expenses"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Expenses</a></li>
+                                
+                              </ul>
+                            </li>
+
+                             {{/if}}
+
+                             {{#if officerGroup}}
+                                <li><a href="/officers/{{id}}/memberslist"><i class="fa fa-sticky-note" aria-hidden="true"></i> Members</a></li>
+                                <li><a href="/groups/officer/{{id}}"><i class="fa fa-users" aria-hidden="true"></i> Groups</a></li>
+                                
+
+                            <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Expense/Payment <span class="caret"></span></a>
+                              <ul class="dropdown-menu">
+                                <li><a href="/officers/{{id}}/mypayment"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Payments</a></li>
+                                 <li><a href="/officers/{{id}}/expenses"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Expenses</a></li>
+                                
+                              </ul>
+                            </li>
+
+                             {{/if}}
+                            {{#if memberGroup}}
+                                <li><a href="/members/{{id}}/loan"><i class="fa fa-sticky-note" aria-hidden="true"></i> Loan Request</a></li>
+                                   <li><a href="/members/{{id}}/saving"><i class="fa fa-book" aria-hidden="true"></i> Saving History</a></li>
+                               
+                            {{/if}}
+                                <li><a href="/members/edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Modify</a></li>
+                            <li class="dropdown">
+                              <a href="/users/logout" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-lock"></span>Logout <span class="caret"></span></a>
+                              <ul class="dropdown-menu">
+                                <li><a href="/users/logout"><span class="glyphicon glyphicon-lock"></span> Logout</a></li>
+                                
+                              </ul>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+<!--menu side -->
+        <div class= "row">
+                <div class="col-md-2">
+                    <section id="navigate">
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                               <h4> Mostly Requested</h4>
+                            </div>
+                            <div class="panel-body">
+                                <div class="list-group">
+
+
+                                {{#if adminGroup}}
+                                        <a class="list-group-item" href="/admin/creditofficers"><i class="fa fa-sticky-note fa-2x" aria-hidden="true"></i> Credit officers</a>
+                                        
+
+                                        <a class="list-group-item" href="/groups/"> <i class="fa fa-users fa-2x" aria-hidden="true"></i> View Groups</a>
+
+                                        <a class="list-group-item" href="/admin/creditofficers"><i class="fa fa-cc-visa fa-2x" aria-hidden="true"></i> Outstanding</a>
+
+                                        <a class="list-group-item" class="list-group-item" href="/admin/creditofficers"><i class="fa fa-book fa-2x" aria-hidden="true"></i> Statements</a>
+
+                                         <a class="list-group-item" href="/admin/creditofficers"><i class="fa fa-sticky-note fa-2x" aria-hidden="true"></i> Withdraw Acct</a>
+
+                                          <a class="list-group-item" href="/admin/expenses"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i> Expenses</a>
+
+                                           <a class="list-group-item" href="/admin/payments"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i> Payments</a>
+
+
+                                        
+                                {{/if}}
+
+
+
+                                  
+                                {{#if officerGroup}}
+                                        <a class="list-group-item" href="/officers/{{id}}/memberslist"><i class="fa fa-sticky-note fa-2x" aria-hidden="true"></i> Members</a>
+                                        
+
+                                        <a class="list-group-item" href="/groups/officer/{{id}}"> <i class="fa fa-users fa-2x" aria-hidden="true"></i> View Groups</a>
+
+                                        <a class="list-group-item" href="/officers/{{id}}/loan"><i class="fa fa-cc-visa fa-2x" aria-hidden="true"></i> Outstanding </a>
+
+                                        <a class="list-group-item" class="list-group-item" href="/officers/{{id}}/statements"><i class="fa fa-book fa-2x" aria-hidden="true"></i> Statements</a>
+
+                                        
+
+                                         <a class="list-group-item" href="/officers/{{id}}/expenses"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i> Expenses</a>
+
+                                         <a class="list-group-item" href="/officers/{{id}}/mypayment"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i> My Payments</a>
+
+                                        
+                                {{/if}}
+
+  <!-- Members Bottom -->                                      
+                                    {{#if memberGroup}}
+                                        <a class="list-group-item" href="/members/{{id}}/loan"><i class="fa fa-cc-visa fa-2x" aria-hidden="true"></i> Outstanding</a>
+
+                                        <a class="list-group-item" class="list-group-item" href="/members/{{id}}/saving"><i class="fa fa-book fa-2x" aria-hidden="true"></i> Saving Acct</a>
+
+                                         <a class="list-group-item" href="/members/{{id}}/withdrawal"><i class="fa fa-sticky-note fa-2x" aria-hidden="true"></i> Withdraw Acct</a>
+
+                                        <a class="list-group-item" class="list-group-item" href="/members/edit"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i> Edit</a>
+
+                                    {{/if}}
+
+                                    
+                                </div>
+                            </div>
+                        </div>
+                     </section>
+                </div>
+                <div class="col-md-10">
+                     {{#if errors}}
+                        {{#each errors}}
+                            <div class = "alert alert-danger">{{msg}}</div>
+                        {{/each}}
+                    {{/if}}
+                    {{#if success_msg}}
+                        <div class = "alert alert-success">{{success_msg}}</div>
+                    {{/if}}
+                
+
+
+           

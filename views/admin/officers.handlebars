@@ -1,0 +1,59 @@
+{{>main}}
+<div class = "container">
+	<div class ="row">
+		<div class="col-md-12 ">
+            <div class="col-md-offset-1 well well-lg">
+			    <input type="text" name="searchmember" id="searchmember"  placeholder="Search Member ......." size = "24" class="form-control">
+            </div>
+<!-- table results-->
+             <div class="panel panel-info">
+                <div class="panel-heading">
+                   <h4> Officers</h4>
+                </div>
+                <div class="panel-body">
+                            <table class="table table-striped">
+					<tr>
+						<thead>
+							<th>No</th>
+							<th>Name</th>
+							<th>Group</th>
+							<th>Saving</th>
+							<th>Withdrawal</th>
+							<th>Loan</th>
+                            <th>Expense</th>
+				
+						</thead>
+						<tbody>
+							{{#if officers}}
+								{{#each officers}}
+									<tr>
+										<td>{{no}}</td>
+										<td style="text-transform:uppercase">{{fname}} {{lname}}</td>
+										<th><a href="/officers/{{id}}/groups" class ="btn btn-info"><i class="fa fa-users"></i> Groups</a></th>
+										<th><a href="/officers/{{id}}/statements" class ="btn btn-primary"><i class="fa fa-money"></i> Deposit N{{totalBalance}}</a></th>
+										<th><a  href="/officers/{{id}}/withdrawal" class ="btn btn-danger"><i class="fa fa-money"></i> Withdrawal</a></th>
+										<th><a href="/officers/{{id}}/loan" class ="btn btn-success"><i class="fa fa-university"></i> Loan N {{totalLoan}}
+                                        <th><a href="/officers/{{id}}/loan" class ="btn btn-success"><i class="fa fa-university"></i> Repayment N{{totalRepayment}}
+                                        </a></th>
+										<th><a  href="/officers/{{id}}/expenses" class ="btn btn-danger"><i class="fa fa-money"></i> Expense</a></th>
+									</tr>
+								{{/each}}
+							{{/if}}
+                                     <tr>
+                                        <td colspan=2>Total:</td>
+                                         <td>N {{account.totalBalance}}</td>
+                                          <td>--</td>
+                                           <td>N {{account.totalLoan}}</td>
+                                            <td>N {{account.totalRepayment}}</td>
+                                     </tr>
+						</tbody>
+					</tr>
+				</table>
+                 </div>
+            </div>
+		</div>
+           
+		</div>
+	</div>
+</div>
+

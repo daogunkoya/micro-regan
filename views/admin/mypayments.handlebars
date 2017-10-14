@@ -1,0 +1,62 @@
+{{>main}}
+<div class="container">
+	
+
+        <div class="row">   
+<!-- Current Account -->
+        <div class="well well-lg">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <strong class="text-success">Current Saving Deposit: {{accounts.totalBalance}}</strong>
+                        </div>
+                         <div class="col-md-4">
+                            <strong class="text-primary">Current Repayment: {{accounts.totalRepayment}}</strong>
+                        </div>
+                         <div class="col-md-4">
+                                <strong class="text-danger">Current Loan: {{accounts.totalLoan}}</strong>
+                        </div>
+                    </div>
+                </div>
+
+<!-- List recent Expenses -->
+
+                <h3 >Payments History</h3>
+                <div class="row">
+                                <div class="col-md-8 col-md-offset-1">
+                                        <table class="table table-striped">
+                                                <tr>
+                                                        <thead>
+                                                                <th>No</th>
+                                                                <th>date</th>
+                                                                <th>Type</th>
+                                                                <th>Officer</th>
+                                                                <th>Paid</th>
+                                                                <th>Balance</th>
+                                                                <th>Saving</th>
+                                                                <th>Repayment</th>
+                                                                <th>Laon</th>
+                                                        </thead>
+                                                </tr>
+                                                <tbody>
+                                                      {{#if payments}}
+                                                        {{#each payments}}
+                                                         <tr>
+                                                                <td> {{no}}</td>
+                                                                <td> {{date}}</td>
+                                                                <td> {{type}}</td>
+                                                                <td> {{officer}}</td>
+                                                                <td>{{paid}}</td>
+                                                                <td> {{balance}}</td>
+                                                                <td> {{saving}}</td>
+                                                                <td> {{repayment}}</td>
+                                                                <td> {{loan}}</td>
+                                                            </tr>
+                                                         
+                                                        {{/each}}
+                                                      {{/if}}  
+                                                </tbody>
+                                        </table>
+                                 </div>
+                 </div>
+
+	</div>

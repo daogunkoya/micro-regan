@@ -1,0 +1,87 @@
+{{>main}}
+<div class="container">
+	
+<!--Search Form -->
+		 	<div class="row">
+		 		<form method="post" name="search"  action="/searchs/officer/statement">
+		 			<input name = "id" type ="hidden" value = {{id}}>
+			 		<div class="col-md-10  well well-lg">
+			 			<div class="row">
+			 				<div class="col-md-5">
+			 					<div class="input-group">
+			 						 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+			 						<input id="dateFrom" name="dateFrom" type="text" placeholder="Select Date from 12/03/2017" class="form-control">
+			 					</div>
+			 				</div>
+			 				<div class="col-md-5">
+			 					<div class="input-group">
+			 						 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+			 						<input id="dateTo"  name="dateTo" type="text" placeholder="Select Date To 4/4/2017" class="form-control">
+			 					</div>
+			 				</div>
+			 			</div><p>
+			 			<div class="row">
+			 				<div class="col-md-2">
+			 					<input name= "option" type="radio" value = "date" checked>Date
+			 				</div>
+			 				<div class="col-md-2">
+			 					<input name= "option" type="radio" value = "today">Today
+			 				</div>
+			 				<div class="col-md-2">
+			 					<input name= "option" type="radio" value = "yesterday">Yesterday
+			 				</div>
+			 				<div class="col-md-2">
+			 					<input name= "option" type="radio" value = "1week">1 Week Ago
+			 				</div>
+			 				<div class="col-md-2">
+			 					<input name= "option" type="radio" value = "amonth">A Month Ago
+			 				</div>
+			 				<div class="col-md-2">
+			 					<input type = "submit" value = "Search" class="btn btn-info"
+			 				</div>
+			 				</div>
+			 			</div>
+		 		</div>
+		 		</form>
+		 	</div>
+
+
+
+<!-- group list -->
+		<h3>{{member.fname}} {{member.lname}},</h3>
+		<strong><u>Saving Account,</u> <span class="text-success">Available Balance: {{officer.totalBalance}}</span></strong>
+		<div class = "row">
+			<div class="col-md-7 col-md-offset-1">
+				<table class= "table table-striped">
+					<tr>
+						<thead>
+							<th>No</th>
+							<th>Date</th>
+							<th>Name</th>
+							<th>Group</th>
+							<th>Deposit</th>
+							<th>Withdraw</th>
+							<th>Balance</th>
+						</thead>
+						<tbody>
+							{{#if savings}}
+								{{#each savings}}
+									<tr>
+										<td>{{no}}</td>
+										<td>{{date}}</td>
+										<td>{{name}}</td>
+										<td>{{groupname}}</td>
+										<td>{{Deposit}}</td>
+										<td>{{Withdraw}}</td>
+										<td>{{balance}}</td>
+									</tr>
+								{{/each}}
+							{{/if}}
+						</tbody>
+					</tr>
+
+				</table>
+			</div>
+		</div>
+
+	</div>

@@ -1,0 +1,129 @@
+     {{>main}}
+      
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 well well-md">
+                    <div class="row">
+<!-- Member Group -->
+                         {{#if memberGroup}}
+                                <div class="col-md-4">
+                                    <div class="panel panel-primary">
+                                        <div class="panel-heading"><strong><i class="fa fa-floppy-o"></i> Saving Balance</strong></div>
+
+                                        <div class="panel-body">
+                                        <span> <i class="fa fa-floppy-o fa-3x"></i><h2 class="text-success">&#8358; {{user.balance}}</h2></span>
+                                        </div>
+                                    </div>  
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="panel panel-danger">
+                                        <div class="panel-heading"><strong>Recent Withdrwals</strong></div>
+
+                                        <div class="panel-body">
+                                        <span> <i class="fa fa-shopping-basket fa-3x"></i><h2>&#8358; {{user.totalWithdrawal}}</h2></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading"><strong>Recent Loan</strong></div>
+                                        <div class="panel-body">
+                                        <span> <i class="fa fa-user-secret fa-3x"></i><h2 class="text-info   ">&#8358; {{user.totalloan}}</h2></span>
+                                        </div>
+                                    </div>
+                                </div>
+                        {{/if}}
+                    </div>
+                    </div>
+            </div>
+
+<!-- Officer Group -->
+           {{#if officerGroup}}
+
+                 <div class="row">
+                        <div class="col-md-10 well well-md">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="panel panel-success text-center" style="background:#fff2cc;">
+                                        <div class="panel-heading">My Member</div>
+
+                                        <div class="panel-body">
+                                        <span> <i class="fa fa-users fa-3x"></i><h2 class="text-success">{{user.officerMembers}}</h2></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="panel panel-danger text-center">
+                                        <div class="panel-heading">My Groups</div>
+
+                                        <div class="panel-body">
+                                        <span> <i class="fa fa-object-group fa-3x"></i><h2>---</h2></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="panel panel-primary text-center" style="background:#ccffcc;">
+                                        <div class="panel-heading">Recent Saving</div>
+                                        <div class="panel-body">
+                                        <span> <i class="fa fa-money fa-3x"></i><h2 class="text-info   "> ---</h2></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12 well well-md">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="panel panel-success">
+                                        <div class="panel-heading">Total Deposit</div>
+
+                                        <div class="panel-body">
+                                        <span> <i class="fa fa-asterisk fa-3x"></i><h2 class="text-success">&#8358; {{accounts.totalBalance}}</h2></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="panel panel-danger">
+                                        <div class="panel-heading">Total Repayment</div>
+
+                                        <div class="panel-body">
+                                        <span> <i class="fa fa-object-group fa-3x"></i><h2>&#8358; {{accounts.totalRepayment}}</h2></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="panel panel-primary">
+                                        <div class="panel-heading">Total Loans</div>
+                                        <div class="panel-body">
+                                        <span> <i class="fa fa-money fa-3x"></i><h2 class="text-info   "> &#8358; {{accounts.totalLoan}}</h2></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                 <div class="col-md-3">
+                                    <div class="panel panel-danger">
+                                        <div class="panel-heading">Total Balance (Repayment)</div>
+
+                                        <div class="panel-body">
+                                        <span> <i class="fa fa-money fa-3x"></i><h2>&#8358; {{accounts.totalBalance}}</h2></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                    </div>
+            {{/if}}
+        </div>
+    </div>
+</div>
+
