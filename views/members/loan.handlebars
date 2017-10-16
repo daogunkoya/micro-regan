@@ -4,10 +4,13 @@
 
 <!-- Saving -->
 {{#if member.loanStatus}}
-	<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">
-	New Loan
+	 {{#if adminGroup}}
+		<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">
+		New Loan
+		</button>
+	{{/if}}
 {{/if}}
-	</button>
+	
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -132,7 +135,9 @@
 										<td><a href ="/members/{{../id}}/repayment/{{_id}}" class="btn btn-success" >Repay / View History</a></td>
 											{{/if}}
 										<!--<td><a href ="#" class="btn btn-primary confirm-loan" data-id= "{{_id}}" data-value = "{{status}}" >Confirm</a></td> -->
+										 {{#if adminGroup}}
 										<td><a href ="#" class="btn btn-danger delete-loan" data-id = "{{_id}}" ><span class="glyphicon glyphicon-remove"> Delete</span></a></td>
+										{{/if}}
 									</tr>
 								{{/each}}
 							{{/if}}

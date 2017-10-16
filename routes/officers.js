@@ -40,13 +40,15 @@ router.get('/:id/memberslist', function(req,res,next){
 	console.log('officerid='+id2)
 	if(req.user.type !== null){
 			Member.officerMembers(id2, function(err,members){
-				members = Statement.numberList(members)
+					members = Statement.numberList(members)
 				Member.officerSaving(id2, function(err, accounts){
-						console.log('accounts='+ accounts)
-						console.log('members'+ members)
-				
-				if(err) throw err
-				res.render('officers/memberslist', {members:members,accounts:accounts[0]})
+						Member.member(id2, function(err,member){
+							console.log('accounts='+ accounts)
+							if(err) throw err
+						res.render('officers/memberslist', 
+							{members:members,accounts:accounts[0],member:member})
+						})
+						
 					})
 				})
 		}

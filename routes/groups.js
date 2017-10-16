@@ -70,29 +70,21 @@ router.get('/officer/:id', function(req,res,next){
 				if(err) throw err
 				console.log('group account'+ accounts)
 					Group.listGroupsByOfficer(id,function(err, groups){	//list groups of officer
+					for(j=0;j<groups.length;j++){
 						for(i=0;i<accounts.length;i++){						//loops through account result groupid & match groupid
-							for(j=0;j<groups.length;j++){
-								if(accounts[i]._id ==groups[j]._id){
+							
+								if(accounts[i]._id == groups[j]._id){
 									console.log('there is match')
-									groupAccount.push({
-										_id:accounts[i]._id,
-										name:groups[j].name,
-										leader:groups[j].leader,
-										location:groups[j].location,
-										name:groups[j].name,
-										officer:groups[j].officerid,
-										officer:groups[j].officer,
-										totalBalance:accounts[i].totalBalance,
-										totalLoan:accounts[i].totalLoan,
-										totalRepayment:accounts[i].totalRepayment,
-									})
+								groups[j].totalBalance = accounts[i].totalBalance
+								groups[j].totalLoan = accounts[i].totalLoan
+								groups[j].totalRepayment = accounts[i].totalRepayment
 								}
 
 							}
 						}
 						console.log('groupAcount='+groupAccount)
 							if(err) throw err
-							res.render('groups/', {member:member,groups:groupAccount})
+							res.render('groups/', {member:member,groups:groups})
 				})
 			})
 		})

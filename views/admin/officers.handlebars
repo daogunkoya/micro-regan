@@ -18,7 +18,7 @@
 							<th>Name</th>
 							<th>Group</th>
 							<th>Saving</th>
-							<th>Withdrawal</th>
+							<th>Members</th>
 							<th>Loan</th>
                             <th>Expense</th>
 				
@@ -29,13 +29,14 @@
 									<tr>
 										<td>{{no}}</td>
 										<td style="text-transform:uppercase">{{fname}} {{lname}}</td>
-										<th><a href="/officers/{{id}}/groups" class ="btn btn-info"><i class="fa fa-users"></i> Groups</a></th>
-										<th><a href="/officers/{{id}}/statements" class ="btn btn-primary"><i class="fa fa-money"></i> Deposit N{{totalBalance}}</a></th>
-										<th><a  href="/officers/{{id}}/withdrawal" class ="btn btn-danger"><i class="fa fa-money"></i> Withdrawal</a></th>
-										<th><a href="/officers/{{id}}/loan" class ="btn btn-success"><i class="fa fa-university"></i> Loan N {{totalLoan}}
-                                        <th><a href="/officers/{{id}}/loan" class ="btn btn-success"><i class="fa fa-university"></i> Repayment N{{totalRepayment}}
+										<th><a href="/officers/{{_id}}/groups" class ="btn btn-info"><i class="fa fa-users"></i> Groups</a></th>
+										<th><a href="/officers/{{_id}}/statements" class ="btn btn-primary"><i class="fa fa-money"></i> Deposit N{{totalBalance}}</a></th>
+										<th><a href="/officers/{{_id}}/memberslist" class ="btn btn-success"><i class="fa fa-university"></i> Members</a></th>
+										<th><a href="/officers/{{_id}}/memberslist" class ="btn btn-success"><i class="fa fa-university"></i> Loan N {{totalLoan}}</a></th>
+										 
+                                        <th><a href="/officers/{{_id}}/loan" class ="btn btn-success"><i class="fa fa-university"></i> Repayment N{{totalRepayment}}
                                         </a></th>
-										<th><a  href="/officers/{{id}}/expenses" class ="btn btn-danger"><i class="fa fa-money"></i> Expense</a></th>
+										<th><a  href="/officers/{{_id}}/expenses" class ="btn btn-danger"><i class="fa fa-money"></i> Expense</a></th>
 									</tr>
 								{{/each}}
 							{{/if}}

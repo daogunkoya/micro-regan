@@ -108,6 +108,8 @@ app.get('*', function(req,res,next){
 		type = req.user.type
 		res.locals.type = type
 		res.locals.id = req.user._id
+		res.locals.fname = req.user.fname
+		res.locals.lname = req.user.lname
 
 		if(type =='Member'){
 		res.locals.memberGroup = true

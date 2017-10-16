@@ -8,6 +8,7 @@ dateOnly = dateFormat(now,'isoDate');
 var Member = require('../models/member');
 var Group = require('../models/group');
 var Statement = require('../models/statement');
+var Helper = require('../helper/formathelper');
 
 
 
@@ -38,36 +39,17 @@ router.get('/memberslist', function(req,res,next){
 router.get('/creditofficers', function(req,res,next){
 //find officers
         Member.findCreditOfficer(function(err,officers){
-                        officersinfo = []
                         console.log('officers='+officers)
 //find officers account
                         Member.officerAccount(function(err,accounts){
                              console.log('accounts='+accounts)
-//check where id officer match officer account info
-                            for(i=0; i<accounts.length; i++){
-                                 for(k=0; k<officers.length; k++){  
-                                        console.log('officer_id='+officers[k]._id + ' accounts id='+ accounts[i]._id)
-                                        if(officers[k]._id == accounts[i]._id){
-                                            console.log('id equals')
-                                                officersinfo.push({
-                                                id:officers[k]._id,
-                                                fname:officers[k].fname,
-                                                lname:officers[k].lname,
-                                                username:officers[k].username,
-                                                totalBalance: parseFloat(accounts[i].totalBalance),
-                                                totalLoan: parseFloat(accounts[i].totalLoan),
-                                                totalRepayment: parseFloat(accounts[i].totalRepayment),
-                                                })
-                                        }
-                                 }
-                                 
-                             console.log('object array = ' + officersinfo)
-                            }
+//merge officer array & account array into one 
+                                officers = Helper.accounts(officers,accounts)
         //total account for display
                             Member.accounts(function(err,total){
                                      console.log('total='+total + 'total balance' + total[0].totalBalance )
-                                officersinfo = Statement.numberList(officersinfo)
-                             res.render('admin/officers',{officers:officersinfo, account:total[0]})  
+                             res.render('admin/officers',{officers:officers,
+                              account:total[0]})  
                             })
                          })
                            

@@ -15,6 +15,11 @@ var dateNow = dateFormat(now,'isoDateTime')
 	module.exports.countCreditOfficer = function(callback){
 	db.members.find({type:'Officer'}).count(callback)
 }
+
+//count credit officer members
+	module.exports.countCreditOfficerMember = function(id,callback){
+	db.members.find({creditofficerid:id}).count(callback)
+}
 // officer total member,groups
 module.exports.officerAccountInfo = function(id,callback){
 		info = []

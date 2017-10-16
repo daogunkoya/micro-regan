@@ -7,8 +7,15 @@ var dateNow = dateFormat(now,'isoDateTime');
 dateOnly = dateFormat(now,'isoDate');
 var Member = require('../models/member');
 var Group = require('../models/group');
-var Saving = require('../models/saving');
+var Helper = require('../helper/formathelper');
 
+
+module.exports.numberList = function(data){
+	for(i=0;i<data.length;i++){
+		data[i].no = i + 1
+	}
+	return data
+}
 module.exports.selectDate = function(option,dateFrom,dateTo){
 	if(option =='date'){
 		dateFrom = dateFrom
@@ -45,4 +52,24 @@ module.exports.selectDate = function(option,dateFrom,dateTo){
 			}
 	}
 		return {dateFrom:dateFrom, dateTo:dateTo}
+}
+
+//two array of json objects users and accounts / (accounts merge to each users)
+module.exports.accounts = function(users, accounts){
+	 for(k=0; k<users.length; k++){  
+                            for(i=0; i<accounts.length; i++){
+                                        console.log('officer_id='+users[k]._id + ' accounts id='+ accounts[i]._id)
+                                if(users[k]._id == accounts[i]._id){
+                                            console.log('id equals')
+                                users[k].totalBalance = parseFloat(accounts[i].totalBalance)
+                                users[k].totalLoan = parseFloat(accounts[i].totalLoan)
+                                users[k].totalRepayment =  parseFloat(accounts[i].totalRepayment)
+                                                
+                                        }
+                                 }
+                                 
+                             console.log('object array = ' + users)
+                            }
+                       users = Helper.numberList(users)
+               return users
 }

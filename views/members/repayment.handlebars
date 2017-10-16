@@ -126,7 +126,9 @@
 										<td><strong>{{stage}}</strong></td>
 										<td>{{balance}}</td>
 										<td><a href ="#" class="btn btn-primary confirm-repayment" data-id= "{{_id}}" data-value = "{{status}}" >Confirm</a></td>
+										 {{#if adminGroup}}
 										<td><a href ="#" class="btn btn-danger delete-repayment" data-id = "{{_id}}" > Delete</a></td>
+										{{/if}}
 									</tr>
 								{{/each}}
 							{{/if}}

@@ -4,9 +4,15 @@
 <!-- Modal Edit Member-->
 	
 <!--Modal Ends Here -->
+<div class="row">
+	<div class="col-md-9">
+	<input type="text" name="searchmember" id="searchmember"  placeholder="Search Member ......." size = "24" class="form-control">
+</div>
+</div><p>
+	<h3>Officer:{{member.fname}} {{member.lname}}</h3>
 	<div class ="row">
 		<div class="col-md-9 well well-lg">
-			<input type="text" name="searchmember" id="searchmember"  placeholder="Search Member ......." size = "24" class="form-control">
+			
 				<table class="table table-striped">
 					<tr>
 						<thead>
@@ -26,7 +32,9 @@
 										<th><a  href="/members/{{_id}}/withdrawal" class ="btn btn-danger">Make Withdrawal</a></th>
 										<th><a href="/members/{{_id}}/loan" class ="btn btn-info">Request Loan</a></th>
 										<th><a href="/groups/member/{{_id}}/edit" class ="btn btn-success"><span class="glyphicon glyphicon-edit"></span> Edit</a></th>
+										{{#if adminGroup}}
 										<th><a href="#" class ="btn btn-danger delete-member" data-id = "{{_id}}"><span class="glyphicon glyphicon-remove"></span> Delete</a></th>
+										{{/if}}
 									</tr>
 								{{/each}}
 								<tr>
