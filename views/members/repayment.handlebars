@@ -111,6 +111,7 @@
 							<th>Loan Id</th>
 							<th>Paid</th>
 							<th>Stage</th>
+							<th>Total</th>
 							<th>Balance</th>
 						</thead>
 						<tbody>
@@ -124,6 +125,7 @@
 										<td>{{loanid}}</td>
 										<td>{{amount}}</td>
 										<td><strong>{{stage}}</strong></td>
+										<td>{{totalrepayment}}</td>
 										<td>{{balance}}</td>
 										<td><a href ="#" class="btn btn-primary confirm-repayment" data-id= "{{_id}}" data-value = "{{status}}" >Confirm</a></td>
 										 {{#if adminGroup}}
