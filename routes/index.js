@@ -6,6 +6,9 @@ var now = new Date();
 var dateNow = dateFormat(now,'isoDateTime');
 dateOnly = dateFormat(now,'isoDate');
 var Member = require('../models/member');
+var Loan = require('../models/loan');
+var Repayment = require('../models/repayment');
+var Statement = require('../models/statement');
 var Group = require('../models/group');
 var UserModel = require('../models/user');
 
@@ -82,28 +85,33 @@ router.get('/dashboard/officers', function(req,res,next){
 
 	id = String(id)	
 	console.log('id='+ id)
-		Member.countMember(function(err, members){
-			Member.countCreditOfficer(function(err, officers){
-				console.log('members'+members + 'officers= ' + officers  )
-				Group.countGroup(function(err,groups){
-					console.log('id in string = '+ id)	
-					Member.member(id,function(err, user){		//member details
+				Group.countGroupByOfficerId(id, function(err,groupsCount){
+					Loan.officerMemberLoan(id, function(err, loanlist){
+						Repayment.officerMemberRepayment(id, function(err, repaymentList){
+							Statement.officerMemberStatement(id, function(err,statementList){
 
-                    Member.officerSaving(id, function(err, accounts){	//officer account
+						console.log('groups = '+ groupsCount)	
+					Member.member(id,function(err, user){		//member details
+                    	Member.officerSaving(id, function(err, accounts){	//officer account
                     	//balance to pay	
                     		accounts[0].totalBalance = parseFloat(accounts[0].totalLoan) -parseFloat(accounts[0].totalRepayment)	
 							    	Member.officerAccountInfo(id, function(err,counts){
-										user.officerMembers = counts				//officer members
+										user.officerMembers = counts	
+										user.groupsCount= groupsCount
+										user.loanList= loanlist
+										user.repaymentList= repaymentList
+										user.statementList = statementList
+														//officer members
 									console.log('account='+ accounts[0].totalBalance)
-									res.render('members/index', {tMembers:members,tOfficers:officers,tGroups:groups,user:user,accounts:accounts[0]})
+									res.render('members/index', {user:user,accounts:accounts[0]})
 								})
 							})
-						
+							})
+						})
+					})
 					})
 				})
-			})
-				
-		})
+	
 })
 
 //Admin route

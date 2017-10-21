@@ -33,6 +33,11 @@ module.exports.getMemberTransaction = function(id,callback){
 module.exports.getOfficerTransaction = function(id,callback){
 	db.statements.find({creditofficerid:id},callback)
 }
+
+//officer members repayments
+module.exports.officerMemberStatement = function(id,callback){
+	db.statements.find({creditofficerid:id}).sort({date:-1}).limit(5,callback )
+}
 module.exports.numberList = function(data){
 	for(i=0;i<data.length;i++){
 		data[i].no = i + 1

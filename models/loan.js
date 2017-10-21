@@ -34,3 +34,8 @@ module.exports.searchOfficerLoan = function(data, callback){
 
 
 }
+
+//officer members repayments
+module.exports.officerMemberLoan = function(id,callback){
+	db.loans.find({creditofficerid:id}).sort({date:-1}).limit(5,callback )
+}

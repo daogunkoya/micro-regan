@@ -353,7 +353,8 @@ router.post('/payment', function(req,res,next){
 //check if balance need to be paid else reset
 	newBalance = (parseFloat(saving) + parseFloat(repayment)) -parseFloat(amount)
 	existingBalance = parseFloat(lastPayments) -parseFloat(amount)
-	balance = (lastPayments == 0 || null)?newBalance:existingBalance
+	//balance = (lastPayments == 0 || null)?newBalance:existingBalance
+	balance = newBalance
 	
 	req.checkBody('amount','Amount is Required').notEmpty()
 	

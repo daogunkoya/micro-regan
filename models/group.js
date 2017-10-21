@@ -7,6 +7,12 @@ var db = mongojs('mongodb://danielbillion:regan@ds135029.mlab.com:35029/regan',[
 module.exports.countGroup = function(callback){
 	db.groups.count(callback)
 }
+
+//count grouo
+module.exports.countGroupByOfficerId = function(id,callback){
+	db.groups.find({officerid:id}).count(callback)
+}
+
 module.exports.register = function(data,callback){
 	db.groups.save(data)
 }
