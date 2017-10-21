@@ -94,7 +94,7 @@ router.get('/dashboard/officers', function(req,res,next){
 					Member.member(id,function(err, user){		//member details
                     	Member.officerSaving(id, function(err, accounts){	//officer account
                     	//balance to pay	
-                    		accounts[0].totalBalance = parseFloat(accounts[0].totalLoan) -parseFloat(accounts[0].totalRepayment)	
+                    		accounts[0].balance = parseFloat(accounts[0].totalLoan) -(parseFloat(accounts[0].totalRepayment) + parseFloat(accounts[0].totalBalance)	)
 							    	Member.officerAccountInfo(id, function(err,counts){
 										user.officerMembers = counts	
 										user.groupsCount= groupsCount
