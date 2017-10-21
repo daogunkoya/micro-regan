@@ -1,6 +1,6 @@
 var mongojs = require('mongojs')
 //var mongoose = require('mongoose')
-var db = mongojs('mongodb://danielbillion:regan@ds135029.mlab.com:35029/regan',['users','members','savings','withdrawals','creditofficers','loans','groups','repayments','guarantors','statements','expenses'])
+var db = mongojs('mongodb://danielbillion:regan@ds135029.mlab.com:35029/regan',['users','members','savings','withdrawals','creditofficers','loans','groups','repayments','guarantors','statements','expenses','payments'])
 
 	Member = require('../models/member')
 var dateFormat = require('dateformat');
@@ -396,19 +396,19 @@ db.expenses.remove({_id:mongojs.ObjectId(id)}, callback)
 
 //Last payment balance
 module.exports.lastPaymentByOfficer = function(id,callback){
-	db.creditofficers.find({officer_id:id}).sort({_id:-1}).limit(1,callback )
+	db.payments.find({officer_id:id}).sort({_id:-1}).limit(1,callback )
 }
 //List out Paymet by Officer
 module.exports.listPaymentByOfficer = function(id,callback){
-	db.creditofficers.find({officer_id:id},callback)
+	db.payments.find({officer_id:id},callback)
 }
 
 //Payments  List
 module.exports.listPayment = function(callback){
-	db.creditofficers.find(callback)
+	db.payments.find(callback)
 }
 
 //save Paymet by Officer
 module.exports.officerAddPayment = function(data,callback){
-	db.creditofficers.save(data)
+	db.payments.save(data)
 }
