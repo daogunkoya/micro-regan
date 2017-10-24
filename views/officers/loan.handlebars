@@ -7,7 +7,7 @@
 		 	<div class="row">
 		 		<form method="post" name="search"  action="/searchs/officer/loan">
 		 			<input name = "id" type ="hidden" value = {{id}}>
-			 		<div class="col-md-10  well well-lg">
+			 		<div class="col-md-12  well well-lg">
 			 			<div class="row">
 			 				<div class="col-md-5">
 			 					<div class="input-group">
@@ -50,7 +50,7 @@
 <!-- Loan list -->
 		<h3>{{member.fname}} {{member.lname}}, Loan History</h3>
 		<div class = "row">
-			<div class="col-md-10">
+			<div class="col-md-8">
 				<table class= "table table-striped">
 					<tr>
 						<thead>	
@@ -62,6 +62,7 @@
 							<th>Balance</th>
 							<th>Deposit</th>
 							<th>Repaid</th>
+							<th>Total</th>
 							<th>SC 10%</th>
 							<th>Interest 15%</th>
 							<th>Status</th>
@@ -78,8 +79,9 @@
 										<td>{{groupname}}</td>
 										<td>{{amount}}</td>
 										<td>{{balance}}</td>
-										<td>{{repaid}}</td>
 										<td>{{deposit}}</td>
+										<td>{{repayment}}</td>
+										<td>{{totalrepayment}}</td>
 										<td>{{charges}}</td>
 											<td>{{interest}}</td>
 										<td><strong>{{status}}</strong></td>
